@@ -1,7 +1,18 @@
+var host = '';
+var port = "";
+var path = '';
+
+// www.example.com/myport ; host= example.com path = /myport
+
 import { get } from "https";
 import { writeFile, existsSync, unlink, readFileSync } from "fs";
 
-function DegistirDuzenle(data) {
+// I use get for pull html, I use fs for verify old data and save
+
+
+function VerifyChangeAndSaveHtml(data) {
+
+    // If u have not a database txt, create a new txt
 
     if (existsSync("./DatabaseHtml.txt")) {
 
@@ -9,7 +20,7 @@ function DegistirDuzenle(data) {
 
         if (DataBaseHtml.length == data.length) {
 
-            console.log("değişiklik yapılmadı")
+            console.log("No change has been made")
             
         } else {
             //Change
@@ -17,26 +28,25 @@ function DegistirDuzenle(data) {
             writeFile('./DatabaseHtml.txt', `${data}`, 'utf-8', (err) => { if (err) console.log(err); });
 
             //notification
-            console.log("değişiklik yapıldı")
+            console.log("A change has been made")
         }
 
     }
     else {
         writeFile('DatabaseHtml.txt', `NewDataBaseHtml`, 'utf8', (err) => { if (err) console.log(err); })
-        console.log("Yeni Oturum açıldı.")
+        console.log("New txt created.")
     }
 
 }
 
-function Getir() {
+function PullHtml(host, port, path) {
     return new Promise((resolve, reject) => {
         var options =
         {
-            host: 'vsco.co',
-            port: 443,
-            path: '/aydinalizadee/gallery'
+            host: host,
+            port: parseInt(port),
+            path: path
         };
-
 
         get(options, function (http_res) {
 
@@ -56,9 +66,6 @@ function Getir() {
     })
 }
 
-
-
-
 setInterval(async function(){
-    DegistirDuzenle(await Getir())
+    VerifyChangeAndSaveHtml(await PullHtml(host,port,path))
 }, 30000)
