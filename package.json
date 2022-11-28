@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CilginSinek/Website-change-tracker.git"
+    "url": "git+https://github.com/CilginSinek/Website-change-tracker/tree/tracker-but-npm.git"
   },
   "author": "cilginsinek",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CilginSinek/Website-change-tracker/issues"
+    "url": "https://github.com/CilginSinek/Website-change-tracker/tree/tracker-but-npm/issues"
   },
-  "homepage": "https://github.com/CilginSinek/Website-change-tracker#readme",
+  "homepage": "https://github.com/CilginSinek/Website-change-tracker/tree/tracker-but-npm#readme",
   "dependencies": {
     "node-fetch": "^3.3.0"
   }
