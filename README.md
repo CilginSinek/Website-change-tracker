@@ -4,4 +4,4 @@
 Replace the url in tracker.js with your own url and run
 
 ## I use
-<a src="https://corsproxy.io/">corsproxy.io</a> <a src="https://github.com/node-fetch/node-fetch">node-fetch</a>
+[corsproxy.io](https://corsproxy.io/) [node-fetch](https://www.npmjs.com/package/node-fetch)
