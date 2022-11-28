@@ -1,13 +1,13 @@
-var host = '';
-var port = "";
-var path = '';
+const url = 'https://corsproxy.io/?' + encodeURIComponent('www.example.com');
+// Your url
 
-// www.example.com/myport ; host= example.com path = /myport
+const myfetch = await fetch(url).then(response => response.text())
 
-import { get } from "https";
+
 import { writeFile, existsSync, unlink, readFileSync } from "fs";
+import fetch from 'node-fetch';
 
-// I use get for pull html, I use fs for verify old data and save
+//I use fs for verify old data and save
 
 
 function VerifyChangeAndSaveHtml(data) {
@@ -16,12 +16,12 @@ function VerifyChangeAndSaveHtml(data) {
 
     if (existsSync("./DatabaseHtml.txt")) {
 
-        var DataBaseHtml = readFileSync("./DatabaseHtml.txt", 'utf-8');
+        let DataBaseHtml = readFileSync("./DatabaseHtml.txt", 'utf-8');
 
         if (DataBaseHtml.length == data.length) {
 
             console.log("No change has been made")
-            
+
         } else {
             //Change
             unlink('./DatabaseHtml.txt', (err) => { if (err) console.log(err); });
@@ -39,33 +39,7 @@ function VerifyChangeAndSaveHtml(data) {
 
 }
 
-function PullHtml(host, port, path) {
-    return new Promise((resolve, reject) => {
-        var options =
-        {
-            host: host,
-            port: parseInt(port),
-            path: path
-        };
 
-        get(options, function (http_res) {
-
-            var data = "";
-
-            http_res.on("data", function (chunk) {
-                data += chunk;
-            });
-
-            http_res.on("end", function () {
-
-                resolve(`${data}`)
-
-            });
-        })
-
-    })
-}
-
-setInterval(async function(){
-    VerifyChangeAndSaveHtml(await PullHtml(host,port,path))
+setInterval(async function () {
+    VerifyChangeAndSaveHtml(myfetch)
 }, 30000)

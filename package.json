@@ -1,0 +1,22 @@
+{
+  "name": "web-change-tracker",
+  "version": "1.0.0",
+  "description": "web-tracker",
+  "main": "tracker.mjs",
+  "scripts": {
+    "test": "node tracker.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CilginSinek/Website-change-tracker.git"
+  },
+  "author": "cilginsinek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CilginSinek/Website-change-tracker/issues"
+  },
+  "homepage": "https://github.com/CilginSinek/Website-change-tracker#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
