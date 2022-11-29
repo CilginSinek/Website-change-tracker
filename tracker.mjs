@@ -1,4 +1,4 @@
-const url = 'https://corsproxy.io/?' + encodeURIComponent('www.example.com');
+const url = '';
 // Your url
 
 const myfetch = await fetch(url).then(response => response.text())
